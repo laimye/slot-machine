@@ -1,0 +1,60 @@
+* {
+	background-color: darkgrey;
+	font-family: 'Quicksand', sans-serif;
+}
+
+header {
+	font-size: 50px;
+	text-align: center;
+	color: green;
+	font-family: 'Monoton', sans-serif;
+}
+
+h1 {
+	font-size: 30px;
+	text-align: center;
+	color: lightgrey;
+}
+
+#balance {
+	color: white;
+}
+
+form {
+	color: white;
+}
+
+#msg {
+	font-size: 20px;
+	color: white;
+	text-align: center;
+}
+#board {
+	border: solid white 2px;
+	border-collapse: collapse;
+	margin: auto;
+	margin: 10 auto;
+}
+
+#board td {
+	width: 75px;
+	height: 75px;
+	border: solid white 2px;
+}
+
+#spin {
+	display: block;
+	margin: 10px 10px;
+	border-radius: 50px;
+	width: 100px;
+	height: 100px;
+	border: solid red 4px;
+	background-color: grey;
+	color: white;
+}
+
+#resetButton {
+	color: white;
+	display: block;
+	margin: 10px;
+}
