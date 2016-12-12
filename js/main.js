@@ -30,7 +30,11 @@ $(function () {
 	var balance;
 	var bet;
 	var cell;
-	var board;
+	var board = [
+		[null, null, null],
+		[null, null, null],
+		[null, null, null]
+	];
 
 	// elements
 	var $msg = $('#msg');
@@ -44,9 +48,9 @@ $('input[name=bet]').on('change', function() {
 	console.log(bet);
 });
 
-$('#resetButton').on('click', initialize());
+$('#resetButton').on('click', initialize);
 
-$('#spin').on('click', handleClick());
+$('#spin').on('click', handleClick);
 
 /*--- Functions ---*/
 
@@ -54,28 +58,27 @@ $('#spin').on('click', handleClick());
 	- fill board with pictures (class names)
 		- pic0, pic1, pic2….pic6*/
 
-	function initialize() {
-		var cells = document.getElementsByClassName('cell');
-		for (var i = 0; i < cells.length; i++) {
-			cells[i].textContent = null;
-		}
-		bet = getSelectedBet();
-		board = [
-			[null, null, null],
-			[null, null, null],
-			[null, null, null]
-		];
-		balance = 1000; //starting 
-		$msg.html('Welcome to MORE SLOTS!');
+function initialize() {
+	var cells = document.getElementsByClassName('cell');
+	for (var i = 0; i < cells.length; i++) {
+		cells[i].textContent = null;
 	}
+	bet = getSelectedBet();
+	board = [
+		[null, null, null],
+		[null, null, null],
+		[null, null, null]
+	];
+	balance = 1000; //starting balance
+	$msg.html('Welcome to MORE SLOTS!');
+}
 
 
 // (b) handle player updates the bet
 // check if player has sufficient funds to continue playing
 function checkBalance () {
-	if (bet <= balance) return true;
-	else alert('Please adjust your bet');
-	return;
+	if (balance >= bet) return;
+	else if (balance < bet) alert('Please adjust your bet');
 }
 
 /*- handle player clicking Start
@@ -88,7 +91,7 @@ function checkBalance () {
  		- display how much the player won or lost
 		- render*/
 
-function handleClick () {
+function handleClick() {
 	flashing()
 	subBet();
 	setRandomImgs();
@@ -115,7 +118,6 @@ function subBet() {
 }
 
 //computer randomly generates pisture to display in reels
-//add delay?
 function setRandomImgs() {
 	for(var i = 0; i < 9; i++) {
   	// generate random digit between 0 & 6 (number of imgs)
@@ -123,11 +125,33 @@ function setRandomImgs() {
     var row = Math.floor(i / 3);
     var col = i - (row * 3);
     board[row][col] = 'img' + rnd;
+	pickImage(rnd);
   }
 }
 setRandomImgs();
-console.log(board); 
+console.log(board);
 
+function pickImage(rnd) {
+	for(var i = 0; i < 9; i++) {
+		 if (rnd == 0) {
+		    document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/octopus.jpg">';
+		 } else if (rnd == 1) {
+		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/more.jpg">';
+		 } else if (rnd == 2) {
+		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/boat.jpg">';
+		 } else if (rnd == 3) {
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/anchor.jpg">';
+		 } else if (rnd == 4) {
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/compass.jpg">';
+		 } else if (rnd == 5) {
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/mermaid.jpg">';
+		 } else if (rnd == 6) {
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/wheel.jpg">';
+		}
+	}
+ }
+
+  
 // checkWinner
 // 		a. 3 in line (in any of three rows) = bet * 10 = (credits)
 // 		b. ? super card 3 in line - all “More” = bet * 15 = (credits)
@@ -203,13 +227,13 @@ function render() {
 // 	1. check if player have enough money to play
 // 	2. if current balance 0, display “Game Over”
 function gameOver() {
-	if (balance === '0') alert('Game Over!');
+	if (balance === 0) alert('Game Over!');
 	else return false;
 }
 
-	function getSelectedBet() {
-		return parseInt($('input[name=bet]:checked').val());
-	}
+function getSelectedBet() {
+	return parseInt($('input[name=bet]:checked').val());
+}
 
 
 })
