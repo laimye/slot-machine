@@ -24,9 +24,9 @@ form {
 	color: white;
 }
 
-.img {
-	height: 80px;
-	width: 80px;
+.cell {
+	height: 50px;
+	width: 50px;
 }
 
 #msg {
@@ -63,11 +63,11 @@ form {
 form label {
 	display: block;
 	position: relative;
-	font-weight: 300;
+	font-weight: 200;
 	font-size: 1.35em;
-	padding: 25px 25px 25px 80px;
+	padding: 10px 10px 10px 80px;
 	margin: 10px auto;
-	height: 30px;
+	height: 10px;
 	z-index: 9;
 	cursor: pointer;
 	-webkit-transition: all 0.25s linear;
@@ -85,7 +85,7 @@ form label .checked {
 
 .button {
     position: absolute;
-    top: 550px;
+    top: 800px;
     left: 200px;
     display: block;
     margin: 0 auto;

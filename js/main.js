@@ -27,18 +27,28 @@ $(function () {
 
 //---- Variables/State ----
 
-	var balance;
-	var bet;
-	var cell;
-	var board = [
-		[null, null, null],
-		[null, null, null],
-		[null, null, null]
-	];
+var balance;
+var bet;
+var cell;
+var board = [
+	[null, null, null],
+	[null, null, null],
+	[null, null, null]
+];
 
-	// elements
-	var $msg = $('#msg');
-	var $balance = $('#balance');
+var images = [
+'assets/pic1.jpg',
+'assets/pic2.jpg',
+'assets/pic3.jpg',
+'assets/pic4.jpg',
+'assets/pic5.jpg',
+'assets/pic6.jpg',
+'assets/pic7.jpg'
+]
+
+// elements
+var $msg = $('#msg');
+var $balance = $('#balance');
 
 // ---- Event listeners ---- 
 
@@ -96,11 +106,7 @@ function handleClick() {
 	subBet();
 	setRandomImgs();
 	checkWinner();
-	if (checkWinner === true) {
-		showWinningCombo();
-	} else {
-		return;
-	};
+	if (checkWinner === true) showWinningCombo();
 	showCredits();
 	updateBalance();
 	render();
@@ -119,20 +125,19 @@ function subBet() {
 
 //computer randomly generates pisture to display in reels
 function setRandomImgs() {
-	for(var i = 0; i < 9; i++) {
-  	// generate random digit between 0 & 6 (number of imgs)
-    var rnd = Math.floor(Math.random() * 4);
-    var row = Math.floor(i / 3);
-    var col = i - (row * 3);
-    board[row][col] = 'img' + rnd;
-	pickImage(rnd);
-//	img.src = "assess/pic" + rnd + ".jpg";
-  }
+    for(var i = 0; i < 9; i++) {
+     // generate random digit between 0 & 6 (number of imgs)
+   var rnd = Math.floor(Math.random() * images.length);
+   var row = Math.floor(i / 3);
+   var col = i - (row * 3);
+   // board holds index of image array
+   board[row][col] = rnd;
+ }
 }
 setRandomImgs();
 console.log(board);
 
-function pickImage(rnd) {
+/*function pickImage(rnd) {
 	for(var i = 0; i < 9; i++) {
 		 if (rnd == 0) {
 		    document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic1.jpg">';
@@ -150,7 +155,7 @@ function pickImage(rnd) {
 			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic7.jpg">';
 		}
 	}
- }
+ }*/
 
 // var rnd
 // var images = [
@@ -182,7 +187,7 @@ function check3InLine() {
 	if ((board[0] == board[1] && board[1] == board[2] && board[1] != null)
 		|| (board[3] == board[4] && board[4] == board[5] && board[4] != null)
 		|| (board[6] == board[7] && board[7] == board[8] && board[7] != null)) {
-		return true;
+		$msg.html('Congratulations, you won 3-in-line!');
 	} else {
 		return false;
 	}
@@ -196,7 +201,7 @@ function check2InLine() {
 		|| (board[4] == board[5] && board[4] != null)
 		|| (board[6] == board[7] && board[6] != null)
 		|| (board[7] == board[8] && board[7] != null))) {
-		alert("Congratulations, 2-in-line");
+		$msg.html('Congratulations, you won 2-in-line!');
 	} else {
 		return false;
 	}
@@ -237,8 +242,17 @@ function showCredits() {
 // render (update display): render board, score
 function render() {
 	$balance.html(balance);
-
+// show the images in the board (set the backround of the td)
+    for (var i = 0; i < 9; i++) {
+        // get the pic number out of board
+        var row = Math.floor(i / 3);
+   var col = i - (row * 3);
+   var picNum = board[row][col];
+        // select the td by it's id        
+        $('#' + i).html('<img src="' + images[picNum] + '">');
+    }
 }
+
 
 // gameOver
 // 	1. check if player have enough money to play
