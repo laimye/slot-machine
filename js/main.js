@@ -42,9 +42,10 @@ var images = [
 'assets/pic3.jpg',
 'assets/pic4.jpg',
 'assets/pic5.jpg',
-'assets/pic6.jpg',
-'assets/pic7.jpg'
-]
+'assets/pic6.jpg'
+//'assets/pic7.jpg'
+];
+var points = [3, 4, 5, 6, 7, 8];
 
 // elements
 var $msg = $('#msg');
@@ -74,21 +75,36 @@ function initialize() {
 		cells[i].textContent = null;
 	}
 	bet = getSelectedBet();
-	board = [
-		[null, null, null],
-		[null, null, null],
-		[null, null, null]
-	];
+	setRandomImgs();
+	render();
+	// board = [
+	// 	[null, null, null],
+	// 	[null, null, null],
+	// 	[null, null, null]
+	// ];
+	// board = [
+	// [($('#0').html('<img src = "images[1]">')), ($('#0').html('<img src = "images[2]">')), ($('#0').html('<img src = "images[0]">'))],
+	// [($('#0').html('<img src = "images[1]">')), ($('#0').html('<img src = "images[1]">')), ($('#0').html('<img src = "images[1]">'))],
+	// [($('#0').html('<img src = "images[1]">')), ($('#0').html('<img src = "images[2]">')), ($('#0').html('<img src = "images[0]">'))]
+	// ];
+	document.getElementById('spin').disabled = false;
 	balance = 1000; //starting balance
 	$msg.html('Welcome to MORE SLOTS!');
 }
 
+initialize();
+
+//$('#' + i).html('<img src="' + images[picNum] + '">')
 
 // (b) handle player updates the bet
 // check if player has sufficient funds to continue playing
 function checkBalance () {
-	if (balance >= bet) return;
-	else if (balance < bet) alert('Please adjust your bet');
+	if (balance >= bet) {
+		return;
+	} else if (balance < bet) {
+		alert('Please adjust your bet');
+		return;
+	}
 }
 
 /*- handle player clicking Start
@@ -102,6 +118,7 @@ function checkBalance () {
 		- render*/
 
 function handleClick() {
+	checkBalance();
 	flashing()
 	subBet();
 	setRandomImgs();
@@ -134,51 +151,14 @@ function setRandomImgs() {
    board[row][col] = rnd;
  }
 }
-setRandomImgs();
 console.log(board);
 
-/*function pickImage(rnd) {
-	for(var i = 0; i < 9; i++) {
-		 if (rnd == 0) {
-		    document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic1.jpg">';
-		 } else if (rnd == 1) {
-		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic2.jpg">';
-		 } else if (rnd == 2) {
-		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic3.jpg">';
-		 } else if (rnd == 3) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic4.jpg">';
-		 } else if (rnd == 4) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic5.jpg">';
-		 } else if (rnd == 5) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic6.jpg">';
-		 } else if (rnd == 6) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic7.jpg">';
-		}
-	}
- }*/
-
-// var rnd
-// var images = [
-// {rnd: 1, image: 'image 1'},
-// {rnd: 2, image: 'image 2'},
-// {rnd: 3, image: 'image 3'},
-// {rnd: 4, image: 'image 4'},
-// {rnd: 5, image: 'image 5'},
-// {rnd: 6, image: 'image 6'},
-// {rnd: 7, image: 'image 7'}
-// ]
-//	for(var i = 0; i < 9; i++) {
-//     	if (rnd === images[i].rnd) {
-// 			image = images[i].image;
-// 			break;
-//     	}
-// 	}
   
 // checkWinner
 // 		a. 3 in line (in any of three rows) = bet * 10 = (credits)
 // 		b. ? super card 3 in line - all “More” = bet * 15 = (credits)
 // 		c. 2 in line (in any of three rows, next to each other) = bet * 5 = (credits)
-function checkWinner() {
+/*function checkWinner() {
 	check3InLine();
 	check2InLine();
 };
@@ -205,7 +185,27 @@ function check2InLine() {
 	} else {
 		return false;
 	}
+}*/
+// the wining credit depends on the winning level (3 for 3-in-line or 2 for 2-in-line), bet, and the ranking of the image.
+//winning calculation = (imageRanking * WiningLevel * (bet/5)
+function computeWinPointsForRow(row) {
+	if (row[0] === row[1] && row[1] === row[2]) {
+		return 3 * points[row[0]] * bet / 5;
+	} else if (row[0] === row[1]) {
+		return 2 * points[row[0]] * bet / 5;
+	} else if (row[1] === row[2]) {
+		return 2 * points[row[1]] * bet / 5;
+	} else {
+		return 0;
+	}
 }
+
+var winPoints = 0;
+board.forEach(function(row) {
+	winPoints += computeWinPointsForRow(row);
+});
+
+console.log(winPoints);
 		
 // showcase matching pictures (hidden div elements)
 function showWinningCombo() {
@@ -258,8 +258,11 @@ function render() {
 // 	1. check if player have enough money to play
 // 	2. if current balance 0, display “Game Over”
 function gameOver() {
-	if (balance === 0) alert('Game Over!');
-	else return false;
+	if (balance <= 0) {
+		alert('Game Over!');
+		document.getElementById('spin').disabled = true;
+	} else {
+	}return false;
 }
 
 function getSelectedBet() {
