@@ -126,6 +126,7 @@ function setRandomImgs() {
     var col = i - (row * 3);
     board[row][col] = 'img' + rnd;
 	pickImage(rnd);
+//	img.src = "assess/pic" + rnd + ".jpg";
   }
 }
 setRandomImgs();
@@ -134,23 +135,39 @@ console.log(board);
 function pickImage(rnd) {
 	for(var i = 0; i < 9; i++) {
 		 if (rnd == 0) {
-		    document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/octopus.jpg">';
+		    document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic1.jpg">';
 		 } else if (rnd == 1) {
-		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/more.jpg">';
+		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic2.jpg">';
 		 } else if (rnd == 2) {
-		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/boat.jpg">';
+		 	document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic3.jpg">';
 		 } else if (rnd == 3) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/anchor.jpg">';
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic4.jpg">';
 		 } else if (rnd == 4) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/compass.jpg">';
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic5.jpg">';
 		 } else if (rnd == 5) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/mermaid.jpg">';
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic6.jpg">';
 		 } else if (rnd == 6) {
-			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/wheel.jpg">';
+			document.getElementsByClassName('cell')[i].innerHTML = '<img src = "assets/pic7.jpg">';
 		}
 	}
  }
 
+// var rnd
+// var images = [
+// {rnd: 1, image: 'image 1'},
+// {rnd: 2, image: 'image 2'},
+// {rnd: 3, image: 'image 3'},
+// {rnd: 4, image: 'image 4'},
+// {rnd: 5, image: 'image 5'},
+// {rnd: 6, image: 'image 6'},
+// {rnd: 7, image: 'image 7'}
+// ]
+//	for(var i = 0; i < 9; i++) {
+//     	if (rnd === images[i].rnd) {
+// 			image = images[i].image;
+// 			break;
+//     	}
+// 	}
   
 // checkWinner
 // 		a. 3 in line (in any of three rows) = bet * 10 = (credits)
