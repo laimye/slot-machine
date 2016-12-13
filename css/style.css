@@ -2,6 +2,7 @@
 	background-color: darkgrey;
 /*	background-repeat: no-repeat;
 */	font-family: 'Quicksand', sans-serif;
+	position: relative;
 }
 
 header {
@@ -17,8 +18,39 @@ h1 {
 	color: lightgrey;
 }
 
+.container {
+	margin: 0 auto;
+	width: 600px;
+	overflow: auto;
+}
+
+#table {
+	display: inline-block;
+	float: left;
+}
+
 #balance {
-	color: white;
+	color: #003399;
+	background-color: white;
+	border-radius: 10px;
+	width: 150px;
+	height: 30px;
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: bold;
+    -webkit-border-radius: 10px;
+    
+    -webkit-box-shadow: 
+        0px 3px rgba(128,128,128,1), /* gradient effects */
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 6px rgba(98,98,98,1),
+        0px 7px rgba(88,88,88,1),
+        0px 8px rgba(78,78,78,1),
+        0px 14px 6px -1px rgba(128,128,128,1); /* shadow */
+    
+    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
 }
 
 form {
@@ -34,12 +66,14 @@ form {
 	font-size: 20px;
 	color: white;
 	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 20px;
 }
 #board {
 	border: solid white 2px;
 	border-collapse: collapse;
-	margin: auto;
-	margin: 10 auto;
+	/*margin: auto;
+	margin: 10 auto;*/
 }
 
 #board td {
@@ -49,8 +83,10 @@ form {
 }
 
 #spin {
-	display: block;
-	margin: 10px 10px;
+	display: inline-block;
+	float: left;
+	margin-top: 50px;
+	margin-left: 50px;
 	border-radius: 50px;
 	width: 100px;
 	height: 100px;
@@ -61,34 +97,40 @@ form {
 
 /*--- The Radio Buttons ---*/
 
-form label {
-	display: block;
+#radio label {
+	display: inline-block;
+	float: left;
 	position: relative;
+	left: 10px;
 	font-weight: 200;
 	font-size: 1.35em;
 	padding: 10px 10px 10px 80px;
 	margin: 10px auto;
 	height: 10px;
-	z-index: 9;
+	width: 60px;
+	z-index: 1; /*stay on top*/
 	cursor: pointer;
 	-webkit-transition: all 0.25s linear;
 }
 
-form:hover label {
+label:hover {
 	color: white;
 }
 
-form label .checked {
+/*form label .checked {
+}*/
 
+footer {
+	padding-top: 30px;
+	color: white;
 }
-
 /*--- The Start Again Button ---*/
 
 .button {
-    position: absolute;
-    top: 800px;
+    position: relative;
+    top: 00px;
     left: 200px;
-    display: block;
+    display: inline-block;
     margin: 0 auto;
     
     -webkit-border-radius: 10px;
@@ -172,7 +214,7 @@ form label .checked {
 }
 
         .button span:hover {
-            color: #5f86f0;
+            color: #4da6ff;
             text-shadow: 0px -1px #97A63A;
             cursor: pointer;
         }

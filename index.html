@@ -12,40 +12,42 @@
 <body>
 <!-- <img src = "http://i.giphy.com/3osxYuthM9iM6IEIY8.gif"> -->
 <header>MORE SLOTS</header>
-<h1>by Elena</h1>
 <div id = "msg">Hello!</div>
-<table id = "board">
-	<tr>
-		<td class = "cell" id = "0" img src="assets/pic1" height="50" width="50"></td>
-		<td class = "cell" id = "1"></td>
-		<td class = "cell" id = "2"></td>
-	</tr>
-	<tr>
-		<td class = "cell" id = "3"></td>
-		<td class = "cell" id = "4"></td>
-		<td class = "cell" id = "5"></td>
-	</tr>
-	<tr>
-		<td class = "cell" id = "6"></td>
-		<td class = "cell" id = "7"></td>
-		<td class = "cell" id = "8"></td>
-	</tr>
-</table>
-<button id = "spin">SPIN REELS</button>
+<div class = "container">
+	<div id = "table">
+	<table id = "board">
+		<tr>
+			<td class = "cell" id = "0" img src="assets/pic1" height="50" width="50"></td>
+			<td class = "cell" id = "1"></td>
+			<td class = "cell" id = "2"></td>
+		</tr>
+		<tr>
+			<td class = "cell" id = "3"></td>
+			<td class = "cell" id = "4"></td>
+			<td class = "cell" id = "5"></td>
+		</tr>
+		<tr>
+			<td class = "cell" id = "6"></td>
+			<td class = "cell" id = "7"></td>
+			<td class = "cell" id = "8"></td>
+		</tr>
+	</table>
+	</div>
+	<div id = "radio">
+		<label>5 <input type="radio" name="bet" value="5"></label>
+		<label>10 <input type="radio" name="bet" value="10" checked></label>
+		<label>20 <input type="radio" name="bet" value="20"></label>
+		<label>50 <input type="radio" name="bet" value="50"></label>
+		<label>100 <input type="radio" name="bet" value="100"></label>
+	</div>
+	<button id = "spin">SPIN REELS</button>
+</div>
+<div id = "balance">1000</div>
+
 <!-- <button id = "resetButton">PLAY AGAIN</button> -->
 <a class = "button" id = "resetButton">
 	<span>Start Again</span>
 </a>
-
-<form>
-<form>
-<label>5 <input type="radio" name="bet" value="5"></label>
-<label>10 <input type="radio" name="bet" value="10" checked></label>
-<label>20 <input type="radio" name="bet" value="20"></label>
-<label>50 <input type="radio" name="bet" value="50"></label>
-<label>100 <input type="radio" name="bet" value="100"></label>
-</form>
-<div id = "balance">1000</div>
 <footer>Created with ♥ by <span>Elena</span></footer>
 <script src = "js/main.js"></script>	
 </body>
