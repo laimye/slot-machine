@@ -47,7 +47,8 @@ var images = [
 'assets/pic6.jpg',
 'assets/pic7.jpg'
 ];
-var points = [3, 4, 5, 6, 7, 8];
+
+var points = [1, 1, 1, 2, 2, 2, 5];
 
 // elements
 var $msg = $('#msg');
@@ -61,7 +62,7 @@ $('input[name=bet]').on('change', function() {
 	console.log(bet);
 });
 
-$('#resetButton').on('click', initialize);
+$('#reset-button').on('click', initialize);
 
 $('#spin').on('click', handleClick);
 
@@ -205,7 +206,7 @@ function render() {
 // 	1. check if player have enough money to play
 // 	2. if current balance 0, display “Game Over”
 function gameOver() {
-	if (balance <= 0) {
+	if (balance <= 4) {
 		alert('Game Over!');
 		document.getElementById('spin').disabled = true;
 	} else {

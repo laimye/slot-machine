@@ -28,10 +28,10 @@ h1 {
 	display: inline-block;
 	float: left;
 }
-
 #balance {
-	color: #003399;
-	background-color: white;
+	color: red/*#003399*/;
+	background-image: url(background1.jpg);
+	margin-top: 20px;
 	border-radius: 10px;
 	width: 150px;
 	height: 30px;
@@ -66,7 +66,7 @@ form {
 	font-size: 20px;
 	color: white;
 	text-align: center;
-	padding-top: 30px;
+	padding-top: 20px;
 	padding-bottom: 20px;
 }
 #board {
