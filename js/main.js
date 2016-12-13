@@ -25,18 +25,17 @@ $(function () {
 - (d) check if game is Over*/
 
 
-//---- Variables/State ----
+//---- Application-Wide Variables ----
 
 var balance;
 var bet;
 var cell;
+var winPoints;
 var board = [
 	[null, null, null],
 	[null, null, null],
 	[null, null, null]
 ];
-
-var winPoints;
 
 var images = [
 'assets/pic1.jpg',
@@ -50,11 +49,12 @@ var images = [
 
 var points = [1, 1, 1, 2, 2, 2, 5];
 
-// elements
+// ---- DOM Element Variables ----
 var $msg = $('#msg');
 var $balance = $('#balance');
 
-// ---- Event listeners ---- 
+
+// ---- Event Listeners ---- 
 
 $('input[name=bet]').on('change', function() {
 	bet = getSelectedBet();
@@ -66,12 +66,10 @@ $('#reset-button').on('click', initialize);
 
 $('#spin').on('click', handleClick);
 
+
 /*--- Functions ---*/
 
-/*- (a) initialize the apps state (Variables)
-	- fill board with pictures (class names)
-		- pic0, pic1, pic2….pic6*/
-
+// initialize the apps state
 function initialize() {
 	var cells = document.getElementsByClassName('cell');
 	for (var i = 0; i < cells.length; i++) {
@@ -99,8 +97,8 @@ initialize();
 
 function handleClick() {
 	checkBalance();
-	flashing()
 	subBet();
+	flashing();
 	setRandomImgs();
 	winPoints = 0;
 	board.forEach(function(row) {
@@ -113,7 +111,6 @@ function handleClick() {
 	gameOver();
 }
 
-// (b) handle player updates the bet
 // check if player has sufficient funds to continue playing
 function checkBalance () {
 	if (balance >= bet) {
@@ -126,8 +123,19 @@ function checkBalance () {
 
 //roll/flash the pictures
 function flashing() {
-
+    var maxCount = 6;
+    var curCount = 0;
+    var timerResolution = 310;
+    var timerId;
+    timerId = setInterval(function() {
+    	setRandomImgs();
+    	renderBoard();
+    	$('#board img').addClass('show');
+    	curCount++;
+    	if (curCount === maxCount) clearInterval(timerId);
+    }, timerResolution);
 }
+
 
 //subtract bet from balance as soon as player spins the reels
 function subBet() {
@@ -138,20 +146,19 @@ function subBet() {
 function setRandomImgs() {
     for(var i = 0; i < 9; i++) {
      // generate random digit between 0 & 6 (number of imgs)
-   var rnd = Math.floor(Math.random() * images.length);
-   var row = Math.floor(i / 3);
-   var col = i - (row * 3);
+	var rnd = Math.floor(Math.random() * images.length);
+	var row = Math.floor(i / 3);
+	var col = i - (row * 3);
    // board holds index of image array
-   board[row][col] = rnd;
- }
-}
+	board[row][col] = rnd;
+	}
 console.log(board);
+}
 
   
 // checkWinner
 // the wining credits depend on the winning level (3 for 3-in-line or 2 for 2-in-line), bet, and the ranking of the image.
-//winning calculation = (imageRanking * WiningLevel * (bet/5))
-
+// winning calculation = (imageRanking * WiningLevel * (bet/5))
 
 function computeWinPointsForRow(row) {
 	if (row[0] === row[1] && row[1] === row[2]) {
@@ -163,7 +170,6 @@ function computeWinPointsForRow(row) {
 	} else {
 		return 0;
 	}
-	console.log(winPoints);
 }
 
 		
@@ -172,39 +178,30 @@ function showWinningCombo() {
 
 }
 
-
-// function showCredits() {
-// 	if (check3InLine == true) {
-// 		bet = bet * 10;
-// 		alert('Congratulations, you won ' + bet + 'credits');
-// 	} else if (check2InLine == true) {
-// 		bet = bet * 5;
-// 		alert('Congratulations, you won' + bet + 'credits');
-// 	} else {
-// 		return;
-// 	}
-// }
-
 // render (update display): render board, score
 function render() {
 	$balance.html(balance);
-// show the images in the board (set the backround of the td)
-    for (var i = 0; i < 9; i++) {
-       // get the pic number out of board
-       var row = Math.floor(i / 3);
-	   var col = i - (row * 3);
-	   var picNum = board[row][col];
-       // select the td by it's id        
-       $('#' + i).html('<img src="' + images[picNum] + '">');
-    }
+	renderBoard();
     $msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits');
 
 }
 
+// show the images in the board (set the backround of the td)
+function renderBoard() {
+	for (var i = 0; i < 9; i++) {
+	   // get the pic number out of board
+	   var row = Math.floor(i / 3);
+	   var col = i - (row * 3);
+	   var picNum = board[row][col];
+	   // select the td by it's id        
+	   $('#' + i).html('<img src="' + images[picNum] + '" class="hide">');
+	   $('#' + i + ' img').removeClass('hide').addClass('show');
+	   console.log($('#' + i + ' img')[0].offsetHeight);
+	}
+}
 
 // gameOver
-// 	1. check if player have enough money to play
-// 	2. if current balance 0, display “Game Over”
+// if current balance equels or less than 4, display “Game Over”
 function gameOver() {
 	if (balance <= 4) {
 		alert('Game Over!');

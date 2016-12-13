@@ -1,8 +1,7 @@
-* {
-	background-color: darkgrey;
-/*	background-repeat: no-repeat;
-*/	font-family: 'Quicksand', sans-serif;
-	position: relative;
+body {
+	background-image: url(ocean1.jpg);
+	background-repeat: no-repeat;
+	font-family: 'Quicksand', sans-serif;
 }
 
 header {
@@ -80,6 +79,18 @@ form {
 	width: 75px;
 	height: 75px;
 	border: solid white 2px;
+}
+
+#board img.show {
+	opacity: 1;
+}
+
+#board img.hide {
+	opacity: 0;
+}
+
+#board img {
+	transition: all 0.3s ease-in-out;
 }
 
 #spin {
