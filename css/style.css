@@ -1,5 +1,5 @@
 body {
-	background-image: url(ocean.jpeg);
+	background-image: url("http://i.imgur.com/eOWImmj.gif");
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: 'Quicksand', sans-serif;
@@ -18,8 +18,13 @@ h1 {
 	color: lightgrey;
 }
 
+.bottom {
+	position: absolute;
+}
+
 .right-column {
-	background-color: white;
+	float: top;
+	margin: auto;
 }
 
 .container {
@@ -35,26 +40,22 @@ h1 {
 }
 
 #balance {
-	color: red/*#003399*/;
+	color: #007399;
 	background-image: url(background1.jpg);
+	box-shadow: inset 0 0 0 4px #5e676e;
 	margin-top: 20px;
 	border-radius: 10px;
 	width: 150px;
 	height: 30px;
 	text-align: center;
+	line-height: 30px;
 	padding: 10px;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 25px;
+	font-weight: 600;
+	font-family: sans-serif;
+	letter-spacing: 4px;
     -webkit-border-radius: 10px;
-    
-    -webkit-box-shadow: 
-        0px 3px rgba(128,128,128,1), /* gradient effects */
-        0px 4px rgba(118,118,118,1),
-        0px 5px rgba(108,108,108,1),
-        0px 6px rgba(98,98,98,1),
-        0px 7px rgba(88,88,88,1),
-        0px 8px rgba(78,78,78,1),
-        0px 14px 6px -1px rgba(128,128,128,1); /* shadow */
+    border: lightblue 3px;
     
     -webkit-transition: -webkit-box-shadow .1s ease-in-out;
 }
@@ -65,7 +66,7 @@ form {
 
 #msg {
 	font-size: 25px;
-	color: yellow;
+	color: black;
 	font-weight: bold;
 	text-align: center;
 	padding-top: 20px;
@@ -92,19 +93,6 @@ form {
 
 #board td img.loser-cell {
 	opacity: 0.3;
-}
-
-#spin {
-	display: inline-block;
-	float: left;
-	margin-top: 50px;
-	margin-left: 50px;
-	border-radius: 50px;
-	width: 100px;
-	height: 100px;
-	border: solid red 4px;
-	background-color: grey;
-	color: white;
 }
 
 /*--- The Radio Buttons ---*/
@@ -138,6 +126,65 @@ footer {
 	padding-top: 30px;
 	color: white;
 }
+
+/* ---- Spin Reels Button --- */
+
+.btn {
+	display: inline-block;
+	position: relative; 
+	cursor: pointer;
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	background: #464d53;
+	margin: 0px auto;
+	text-align: center;
+	border-radius: 999px;
+	color: #99e6ff;
+	font-size: 18px;
+	font-family: sans-serif;
+	box-shadow: 
+		inset 1px 1px 2px rgba(255,255,255,0.3), 
+		inset 3px 15px 45px rgba(255,255,255,0.1),
+		inset -1px -1px 2px rgba(0,0,0,0.5), 
+		inset -3px -15px 45px rgba(0,0,0,0.2),
+		1px 5px 30px -4px rgba(0,0,0,1);
+	  -webkit-transition: 0.1s ease-out;
+	  -moz-transition:    0.1s ease-out;
+	  -o-transition:      0.1s ease-out;
+	  transition:         0.1s ease-out;
+}
+
+.btn:before {
+	content: "";
+	background: #1A1A1A;
+	/*display: inline-block;*/
+	width: 140px;
+	height: 140px;
+	position: absolute;
+	top: -10px;
+	left: -10px;
+	z-index: -1;
+	border-radius: 999px;
+	box-shadow: inset -1px -1px 2px rgba(255,255,255,0.3), 
+	inset -5px -15px 40px rgba(255,255,255,0.1),
+	inset 1px 1px 2px rgba(0,0,0,0.5), 
+	inset 5px 15px 40px rgba(0,0,0,0.2),
+	-2px -40px 50px -20px rgba(255,255,255,0.1),
+	/*2px 35px 50px -10px rgba(0,0,0,0.4),*/
+	0px 0px 15px 2px rgba(60,60,60,1);
+}
+
+.btn:active {
+	color: rgba(0,0,0,0.7);
+	text-shadow: 1px 1px 0px rgba(255,255,255,0.15);
+	box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 
+	          inset 3px 15px 45px rgba(0,0,0,0.2),
+	          inset -1px -1px 2px rgba(0,0,0,0.5), 
+	          inset -3px -15px 45px rgba(255,255,255,0.1),
+	          1px 5px 10px -4px rgba(0,0,0,1);
+}
+
 /*--- The Start Again Button ---*/
 
 .button {
