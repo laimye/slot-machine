@@ -37,17 +37,19 @@ var board = [
 	[null, null, null]
 ];
 
+var winningCells;
+
 var images = [
-'assets/pic1.jpg',
-'assets/pic2.jpg',
-'assets/pic3.jpg',
-'assets/pic4.jpg',
-'assets/pic5.jpg',
-'assets/pic6.jpg',
-'assets/pic7.jpg'
+	'assets/pic1.jpg',
+	'assets/pic2.jpg',
+	'assets/pic3.jpg',
+	'assets/pic4.jpg',
+	'assets/pic5.jpg',
+	'assets/pic6.jpg',
+	'assets/pic7.jpg'
 ];
 
-var points = [1, 1, 1, 2, 2, 2, 5];
+var points = [3, 3, 3, 4, 4, 5, 5];
 
 // ---- DOM Element Variables ----
 var $msg = $('#msg');
@@ -71,15 +73,11 @@ $('#spin').on('click', handleClick);
 
 // initialize the apps state
 function initialize() {
-	var cells = document.getElementsByClassName('cell');
-	for (var i = 0; i < cells.length; i++) {
-		cells[i].textContent = null;
-	}
 	bet = getSelectedBet();
-	setRandomImgs(); // consider putting there preset pictures
-	render();
+	setRandomImgs();
 	document.getElementById('spin').disabled = false;
 	balance = 1000; //starting balance
+	render();
 	$msg.html('Welcome to MORE SLOTS!');
 }
 
@@ -96,19 +94,26 @@ initialize();
 		- render*/
 
 function handleClick() {
+	$('#board img').removeClass('loser-cell');
 	checkBalance();
 	subBet();
-	flashing();
+	flashing(finishHandleClick);
 	setRandomImgs();
+}
+
+function finishHandleClick() {
 	winPoints = 0;
-	board.forEach(function(row) {
-		winPoints += computeWinPointsForRow(row);
+	winningCells = [
+		[null, null, null],
+		[null, null, null],
+		[null, null, null]
+	];
+	board.forEach(function(row, idx) {
+		winPoints += computeWinPointsForRow(row, idx);
 	});
 	balance += winPoints;
-	//if (computeWinPointsForRow === true) showWinningCombo();
-	//showCredits();
-	render();
 	gameOver();
+	render();
 }
 
 // check if player has sufficient funds to continue playing
@@ -122,17 +127,19 @@ function checkBalance () {
 }
 
 //roll/flash the pictures
-function flashing() {
-    var maxCount = 6;
+function flashing(cb) {
+    var maxCount = 8;
     var curCount = 0;
     var timerResolution = 310;
     var timerId;
     timerId = setInterval(function() {
     	setRandomImgs();
     	renderBoard();
-    	$('#board img').addClass('show');
     	curCount++;
-    	if (curCount === maxCount) clearInterval(timerId);
+    	if (curCount === maxCount) {
+    		clearInterval(timerId);
+    		cb();
+    	}
     }, timerResolution);
 }
 
@@ -160,12 +167,15 @@ console.log(board);
 // the wining credits depend on the winning level (3 for 3-in-line or 2 for 2-in-line), bet, and the ranking of the image.
 // winning calculation = (imageRanking * WiningLevel * (bet/5))
 
-function computeWinPointsForRow(row) {
+function computeWinPointsForRow(row, rowIdx) {
 	if (row[0] === row[1] && row[1] === row[2]) {
+		winningCells[rowIdx][0] = winningCells[rowIdx][1] = winningCells[rowIdx][2] = true;
 		return 3 * points[row[0]] * bet / 5;
 	} else if (row[0] === row[1]) {
+		winningCells[rowIdx][0] = winningCells[rowIdx][1] = true;
 		return 2 * points[row[0]] * bet / 5;
 	} else if (row[1] === row[2]) {
+		winningCells[rowIdx][1] = winningCells[rowIdx][2] = true;
 		return 2 * points[row[1]] * bet / 5;
 	} else {
 		return 0;
@@ -174,29 +184,34 @@ function computeWinPointsForRow(row) {
 
 		
 // showcase matching pictures (hidden div elements)
-function showWinningCombo() {
-
+function renderWinningCells() {
+	for (var row = 0; row < winningCells.length; row++) {
+		for (var col = 0; col < winningCells[row].length; col++) {
+			var id = row * 3 + col;
+			$('#' + id + ' img').removeClass('loser-cell');
+			$('#' + id + ' img').addClass(winningCells[row][col] ? '' : 'loser-cell');
+		}
+	}
 }
 
 // render (update display): render board, score
 function render() {
 	$balance.html(balance);
 	renderBoard();
+	if (winningCells) renderWinningCells();
     $msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits');
-
 }
 
 // show the images in the board (set the backround of the td)
 function renderBoard() {
+	$('#board img').each(function() { console.log(this.offsetHeight) });
 	for (var i = 0; i < 9; i++) {
-	   // get the pic number out of board
-	   var row = Math.floor(i / 3);
-	   var col = i - (row * 3);
-	   var picNum = board[row][col];
-	   // select the td by it's id        
-	   $('#' + i).html('<img src="' + images[picNum] + '" class="hide">');
-	   $('#' + i + ' img').removeClass('hide').addClass('show');
-	   console.log($('#' + i + ' img')[0].offsetHeight);
+	   	// get the pic number out of board
+	   	var row = Math.floor(i / 3);
+	   	var col = i - (row * 3);
+	   	var picNum = board[row][col];
+	   	// select the td by it's id
+		$('#' + i + ' img').attr('src', images[picNum]);
 	}
 }
 

@@ -56,11 +56,6 @@ form {
 	color: white;
 }
 
-.cell {
-	height: 50px;
-	width: 50px;
-}
-
 #msg {
 	font-size: 20px;
 	color: white;
@@ -79,18 +74,11 @@ form {
 	width: 75px;
 	height: 75px;
 	border: solid white 2px;
+	color: red;
 }
 
-#board img.show {
-	opacity: 1;
-}
-
-#board img.hide {
-	opacity: 0;
-}
-
-#board img {
-	transition: all 0.3s ease-in-out;
+#board td img.loser-cell {
+	opacity: 0.3;
 }
 
 #spin {
@@ -122,10 +110,11 @@ form {
 	z-index: 1; /*stay on top*/
 	cursor: pointer;
 	-webkit-transition: all 0.25s linear;
+	color: white;
 }
 
 label:hover {
-	color: white;
+	color: green;
 }
 
 /*form label .checked {
@@ -160,7 +149,6 @@ footer {
 
 .button span {
     background-color: #E8E8E8;
-    
     background-image: 
         /* gloss gradient */
         -webkit-gradient(
@@ -169,7 +157,7 @@ footer {
             left top, 
             color-stop(50%,rgba(255,255,255,0)), 
             color-stop(50%,rgba(255,255,255,0.3)), 
-            color-stop(100%,rgba(255,255,255,0.2))),
+            color-stop(100%,rgba(255,255,255,0.2)))
         
         /* dark outside gradient */
         -webkit-gradient(
@@ -208,39 +196,36 @@ footer {
             0px 1px 1px #FFFFFF; /* bottom edge */
     
     -webkit-background-size: 100%, 100%, 100%, 4px 4px;
-    
     -webkit-border-radius: 10px;
     -webkit-transition: -webkit-transform .1s ease-in-out;
-    
+
     display: inline-block;
     padding: 10px 40px 10px 40px;
-    
     color: #3A474D;
     text-transform: uppercase;
-    font-family: 'TradeGothicLTStd-BdCn20','PT Sans Narrow';
+    font-family: 'TradeGothicLTStd-BdCn20', sans-serif;
     font-weight: 700;
-    font-size: 32px;
-    
+    font-size: 25px;
     text-shadow: 0px 1px #fff, 0px -1px #262F33;
 }
 
-        .button span:hover {
-            color: #4da6ff;
-            text-shadow: 0px -1px #97A63A;
-            cursor: pointer;
-        }
+.button span:hover {
+    color: #4da6ff;
+    text-shadow: 0px -1px #97A63A;
+    cursor: pointer;
+}
 
-        .button:active {
-            -webkit-box-shadow: 
-                0px 3px rgba(128,128,128,1),
-                0px 4px rgba(118,118,118,1),
-                0px 5px rgba(108,108,108,1),
-                0px 6px rgba(98,98,98,1),
-                0px 7px rgba(88,88,88,1),
-                0px 8px rgba(78,78,78,1),
-                0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
-        }
+.button:active {
+    -webkit-box-shadow: 
+        0px 3px rgba(128,128,128,1),
+        0px 4px rgba(118,118,118,1),
+        0px 5px rgba(108,108,108,1),
+        0px 6px rgba(98,98,98,1),
+        0px 7px rgba(88,88,88,1),
+        0px 8px rgba(78,78,78,1),
+        0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
+}
 
-        .button:active span{
-            -webkit-transform: translate(0, 5px); /* depth of button press */
-        }
+.button:active span{
+    -webkit-transform: translate(0, 5px); /* depth of button press */
+}
