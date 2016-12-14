@@ -1,5 +1,6 @@
 body {
-	background-image: url(ocean1.jpg);
+	background-image: url(ocean.jpeg);
+	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: 'Quicksand', sans-serif;
 }
@@ -7,7 +8,7 @@ body {
 header {
 	font-size: 50px;
 	text-align: center;
-	color: green;
+	color: white;
 	font-family: 'Monoton', sans-serif;
 }
 
@@ -17,16 +18,22 @@ h1 {
 	color: lightgrey;
 }
 
+.right-column {
+	background-color: white;
+}
+
 .container {
 	margin: 0 auto;
 	width: 600px;
 	overflow: auto;
+	text-align: center;
 }
 
 #table {
 	display: inline-block;
 	float: left;
 }
+
 #balance {
 	color: red/*#003399*/;
 	background-image: url(background1.jpg);
@@ -57,24 +64,30 @@ form {
 }
 
 #msg {
-	font-size: 20px;
-	color: white;
+	font-size: 25px;
+	color: yellow;
+	font-weight: bold;
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
 #board {
-	border: solid white 2px;
 	border-collapse: collapse;
 	/*margin: auto;
 	margin: 10 auto;*/
 }
 
 #board td {
-	width: 75px;
-	height: 75px;
-	border: solid white 2px;
-	color: red;
+	border: solid darkgrey 3px;
+/*	color: red;*/
+}
+
+#board td img {
+	text-align: center;
+	height: 143px;
+	width: 143px;
+	vertical-align: middle;
+
 }
 
 #board td img.loser-cell {
@@ -113,12 +126,13 @@ form {
 	color: white;
 }
 
-label:hover {
-	color: green;
-}
-
-/*form label .checked {
+/*#radio label input[type=radio] checked {
+	background: yellow;
 }*/
+
+#radio label:hover {
+	color: yellow;
+}
 
 footer {
 	padding-top: 30px;

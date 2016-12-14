@@ -39,6 +39,8 @@ var board = [
 
 var winningCells;
 
+// ---- Constants ----
+
 var images = [
 	'assets/pic1.jpg',
 	'assets/pic2.jpg',
@@ -50,6 +52,7 @@ var images = [
 ];
 
 var points = [3, 3, 3, 4, 4, 5, 5];
+
 
 // ---- DOM Element Variables ----
 var $msg = $('#msg');
@@ -95,9 +98,11 @@ initialize();
 
 function handleClick() {
 	$('#board img').removeClass('loser-cell');
+	var sound = new Audio('http://www.freesound.org/data/previews/69/69690_866625-lq.mp3');
+	sound.play();
 	checkBalance();
 	subBet();
-	flashing(finishHandleClick);
+	flashing(finishHandleClick); // finishHandleClick - callback function
 	setRandomImgs();
 }
 
@@ -159,7 +164,6 @@ function setRandomImgs() {
    // board holds index of image array
 	board[row][col] = rnd;
 	}
-console.log(board);
 }
 
   
@@ -183,7 +187,7 @@ function computeWinPointsForRow(row, rowIdx) {
 }
 
 		
-// showcase matching pictures (hidden div elements)
+// showcase matching pictures. The non-winning cells become transparent
 function renderWinningCells() {
 	for (var row = 0; row < winningCells.length; row++) {
 		for (var col = 0; col < winningCells[row].length; col++) {
@@ -198,13 +202,25 @@ function renderWinningCells() {
 function render() {
 	$balance.html(balance);
 	renderBoard();
-	if (winningCells) renderWinningCells();
-    $msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits');
+	if (winningCells) {
+		renderWinningCells();
+		if ((winPoints - bet) > 0)	{
+			$msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits');
+			var sound = new Audio('http://www.freesound.org/data/previews/209/209578_2558531-lq.mp3');
+			sound.play();
+		} else {
+			//convert a negative number to a positive and display a different message
+			var num = winPoints - bet;
+			var posNum = (num < 0) ? num * -1 : num;
+    		$msg.html('Oh well, you lost ' + posNum + ' credits');
+		}
+	}
 }
+
 
 // show the images in the board (set the backround of the td)
 function renderBoard() {
-	$('#board img').each(function() { console.log(this.offsetHeight) });
+	// $('#board img').each(function() { console.log(this.offsetHeight) });
 	for (var i = 0; i < 9; i++) {
 	   	// get the pic number out of board
 	   	var row = Math.floor(i / 3);
@@ -216,7 +232,7 @@ function renderBoard() {
 }
 
 // gameOver
-// if current balance equels or less than 4, display “Game Over”
+// if current balance <= 4, display “Game Over”
 function gameOver() {
 	if (balance <= 4) {
 		alert('Game Over!');
