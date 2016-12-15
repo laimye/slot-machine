@@ -23,8 +23,8 @@ To play the game, please click here: https://laimye.github.io/slot-machine/
 ## NEXT STEPS
 
 Some advanced features are planned to be implemented in the next version (v2) of the game, such as:
-1.	Add diagonal winning combination;
-2.	Add bonus picture that will allow to win more credits when hits winning combination;
-3.	Display trends – results of the last 10 plays.
+- Add diagonal winning combination;
+- Add bonus picture that will allow to win more credits when hits winning combination;
+- Display trends – results of the last 10 plays.
 
 Good luck!
