@@ -1,0 +1,15 @@
+html {
+ background: url(waves1.jpg) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
+header {
+	font-size: 50px;
+	text-align: center;
+	color: white;
+	font-family: 'Monoton', sans-serif;
+	margin-bottom: 20px;
+}

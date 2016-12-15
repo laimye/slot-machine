@@ -51,7 +51,7 @@ var images = [
 	'assets/pic7.jpg'
 ];
 
-var points = [3, 3, 3, 4, 4, 5, 5];
+var points = [3, 3, 3, 4, 4, 4, 5];
 
 
 // ---- DOM Element Variables ----

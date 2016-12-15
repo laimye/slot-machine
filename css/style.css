@@ -7,7 +7,7 @@ body {
 }
 
 header {
-	font-size: 50px;
+	font-size: 60px;
 	text-align: center;
 	color: white;
 	font-family: 'Monoton', sans-serif;
@@ -28,27 +28,20 @@ h1 {
 }
 
 .right-column {
+	position: relative;
 	float: right;
 	margin: auto;
 	display: inline-block;
-	height: 650px;
+	height: 585px;
 	width: 200px;
 	background-color: rgba(0, 0, 0, 0.3);
 	margin-top: 55px;
-/*	border: 30px solid transparent;
-	border-radius: 20px;
-	padding: 15px;
-	border-style: solid;
-	border-image: url(shell-rendered.png); 
-	border-image-repeat: round;
-	border-image-slice: 20;
-	border-image-width: 20px;*/
+	border-radius: 30px;
 }
 
 .container {
 	margin: 0 auto;
-	width: 950px;
-*/	overflow: auto;
+	width: 1000px;
 	text-align: center;
 	padding-top: 10px;
 	margin-bottom: 30px;
@@ -61,11 +54,18 @@ h1 {
 	float: left;
 }
 
-#table-frame {
+#table-frame { 
 	display: inline-block;
 	position: absolute;
-	top: 27px;
-	left: 10px;
+	top: 45px;
+	left: 4px;
+}
+
+#column-frame {
+	display: inline-block;
+	position: absolute;
+	top: -31px;
+	left: -56px;
 }
 
 #balance {
@@ -87,12 +87,6 @@ h1 {
     border: lightblue 3px;
 }
 
-
-
-/*form {
-	color: white;
-}*/
-
 #msg {
 	font-size: 25px;
 	color: black;
@@ -106,6 +100,7 @@ h1 {
 	width: 700px;
 	height: 20px;
 	border-radius: 20px;
+	border: rgba(255, 255, 255, 0.2) 4px;
 }
 
 #board {
@@ -114,13 +109,10 @@ h1 {
 	position: absolute;
 	top: 103px;
 	left: 165px;
-	/*margin: auto;
-	margin: 10 auto;*/
 }
 
 #board td {
 	border: solid darkgrey 3px;
-/*	color: red;*/
 }
 
 #board td img {
@@ -153,10 +145,6 @@ h1 {
 	color: white;
 }
 
-/*#radio label input[type=radio] checked {
-	background: yellow;
-}*/
-
 #radio label:hover {
 	color: yellow;
 }
@@ -177,7 +165,7 @@ footer {
 	height: 120px;
 	line-height: 120px;
 	background: #464d53;
-	margin: 40px 0 0 0px;/*0px auto;*/
+	margin: 40px 0 0 0px;
 	text-align: center;
 	border-radius: 999px;
 	color: #99e6ff;
@@ -230,9 +218,10 @@ footer {
 .button {
     position: relative;
     top: 50px;
-/*    left: 200px;*/
     display: inline-block;
     margin: 0 auto;
+    margin-left: 20px;
+    margin-right: 20px;
     
     -webkit-border-radius: 10px;
     
