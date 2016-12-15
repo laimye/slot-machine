@@ -1,15 +1,69 @@
 html {
- background: url(waves1.jpg) no-repeat center center fixed;
+ background: url(blue1.jpg) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
  background-size: cover;
 }
 
+body {
+	text-align: center;
+	width: 900px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	font-family: 'Indie Flower', cursive;
+	font-size: 20px;
+}
+
 header {
-	font-size: 50px;
+	font-size: 60px;
 	text-align: center;
 	color: white;
 	font-family: 'Monoton', sans-serif;
 	margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+	color: #004080;
+}
+
+h1 {
+	text-align: center;
+}
+
+h4 {
+	color: #005580;
+}
+
+p {
+	color: #262626;
+}
+
+h3 {
+	padding-top: 30px;
+}
+
+.formula {
+	font-weight: bold;
+	padding: 10px 20px;
+	font-size: 24px;
+}
+
+.details {
+	text-align: left;
+	padding-left: 100px;
+	padding-bottom: 20px;
+}
+
+.ready-to-play a {
+	color: #004080;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+footer {
+	color: #808080;
+	padding-top: 20px;
+	font-size: 13px;
 }

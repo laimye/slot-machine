@@ -44,7 +44,6 @@ h1 {
 	width: 1000px;
 	text-align: center;
 	padding-top: 10px;
-	margin-bottom: 30px;
 }
 
 #table {
@@ -151,8 +150,21 @@ h1 {
 
 footer {
 	padding-top: 30px;
-	color: white;
+	color: #808080;
 	clear: both;
+	text-align: center;
+	font-size: 13px;
+}
+
+.signature {
+	padding-top: 20px;
+}
+
+.how-to-play a {
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	margin-bottom: 20px;
 }
 
 /* ---- Spin Reels Button --- */

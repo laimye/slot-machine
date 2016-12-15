@@ -5,48 +5,58 @@
 	<title>More Slots</title>
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/instructions.css">
 
 </head>
 <body>
-<header>MORE SLOTS</header>
-<h1>How To Play More Slots</h1>
-<section>
-	<p>1. Know your limits...</br>
-	2. Select the <strong>Bet</strong> that you would like to bet, and...</br>
-	3. Hit <strong>Spin Reels</strong> button. 
-</section>
-<section>
-	<h2>WINNING COMBINATION AND CALCULATION</h2>
-	<p>First thing you need to know if you decide to calculate the probability of you winning the game is that you play 7 different symbols/cards. Each symbol has a <strong>ranking</strong> that will effect the amount of credits you win.
-	<h3>RANKING SYSTEM</h3>
-	<h4>3 points</h4>
-	<div class="3points">
-		<img id="octopus" src="assets/pic1.jpg">
-		<img id="wheel" src="assets/pic2.jpg">
-		<img id="compass" src="assets/pic3.jpg">
-	</div>
-	<h4>4 points</h4>
-	<div class="4points">
-		<img id="boat" src="assets/pic4.jpg">
-		<img id="anchor" src="assets/pic5.jpg">
-		<img id="mermaid" src="assets/pic6.jpg">
-	</div>
-	<h4>5 points</h4>
-	<div class="3points">
-		<img id="more" src="assets/pic7.jpg">
-	</div>
-	<h3>CALCULATION</h3>
-	<p>The calculation formula is as follows:</br>
+	<header>MORE SLOTS</header>
+	<h1>How To Play More Slots</h1>
+	<section>
+		<p>1. Know your limits...<br>
+		2. Decide how much you want to <strong>Bet</strong>, and...<br>
+		3. Hit <strong>Spin Reels</strong> button. 
+		</p>
+	</section>
+	<section>
+		<h2>WINNING COMBINATIONS AND CALCULATION</h2>
+		<p>
+			First thing you need to know, in case you decide to calculate the probability of you winning the game, is that you will be playing 7 symbols. Each symbol has a <strong>ranking</strong> and depending on that your winnings will be calculated. When you hit a winning combination, winnings will be added to the <strong>Balance</strong> meter. The <strong>Game is Over</strong> when your balance equals or less than 4.
+		</p>
+		<h3>RANKING SYSTEM</h3>
+		<h4>3 POINTS</h4>
+		<div class="3points">
+			<img id="octopus" src="assets/pic1.jpg">
+			<img id="wheel" src="assets/pic2.jpg">
+			<img id="compass" src="assets/pic3.jpg">
+		</div>
+		<h4>4 POINTS</h4>
+		<div class="4points">
+			<img id="boat" src="assets/pic4.jpg">
+			<img id="anchor" src="assets/pic5.jpg">
+			<img id="mermaid" src="assets/pic6.jpg">
+		</div>
+		<h4>5 POINTS</h4>
+		<div class="3points">
+			<img id="more" src="assets/pic7.jpg">
+		</div>
+		<h3>CALCULATION</h3>
+		<p>The calculation formula is as follows:</p><br>
+		<div class="formula">RANKING * LEVEL * (BET/5)</div>
+		<div class="details">
+			<p>
+				<strong>Ranking</strong> - points associated with the ranking of the symbol (see above). <br>
+				<strong>Level</strong> - There are two winning levels:<br>
+				- 3 - when you get a winning combination of three of the same symbol in a row.<br>
+				- 2 - when you get a winning combination of three of the same symbol in a row. Keep in mind, the matching symbols should be right next to each other.<br>
+				<strong>Bet</strong> - The Bet that you selected. By default the Bet is set to 20. <br><br>
+			</p>
+		</div>
+	</section>
 
-	</p>
-</section>
+	<div class="ready-to-play"> <a href="index.html">READY TO PLAY?</a></div><br>
+	<footer>Created with ♥ by <span>EK</span></footer>
 
-
-</p>
-<footer>Created with ♥ by <span>Elena</span></footer>
-
-<script src="js/main.js"></script>	
+	<script src="js/main.js"></script>	
 </body>
 </html>

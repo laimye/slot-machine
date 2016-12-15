@@ -31,13 +31,14 @@ var balance;
 var bet;
 var cell;
 var winPoints;
+var winningCells;
 var board = [
 	[null, null, null],
 	[null, null, null],
 	[null, null, null]
 ];
 
-var winningCells;
+
 
 // ---- Constants ----
 
@@ -55,8 +56,10 @@ var points = [3, 3, 3, 4, 4, 4, 5];
 
 
 // ---- DOM Element Variables ----
+
 var $msg = $('#msg');
 var $balance = $('#balance');
+var player = new Audio();
 
 
 // ---- Event Listeners ---- 
@@ -99,8 +102,8 @@ initialize();
 
 function handleClick() {
 	$('#board img').removeClass('loser-cell');
-	var sound = new Audio('http://www.freesound.org/data/previews/69/69690_866625-lq.mp3');
-	sound.play();
+	player.src = 'http://www.freesound.org/data/previews/69/69690_866625-lq.mp3';
+	player.play();
 	checkBalance();
 	subBet();
 	flashing(finishHandleClick); // finishHandleClick - callback function
@@ -158,12 +161,12 @@ function subBet() {
 //computer randomly generates pisture to display in reels
 function setRandomImgs() {
     for(var i = 0; i < 9; i++) {
-     // generate random digit between 0 & 6 (number of imgs)
-	var rnd = Math.floor(Math.random() * images.length);
-	var row = Math.floor(i / 3);
-	var col = i - (row * 3);
-   // board holds index of image array
-	board[row][col] = rnd;
+	    // generate random digit between 0 & 6 (number of imgs)
+		var rnd = Math.floor(Math.random() * images.length);
+		var row = Math.floor(i / 3);
+		var col = i - (row * 3);
+	    // board holds index of image array
+		board[row][col] = rnd;
 	}
 }
 
@@ -207,8 +210,8 @@ function render() {
 		renderWinningCells();
 		if ((winPoints - bet) > 0)	{
 			$msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits!');
-			var sound = new Audio('http://www.freesound.org/data/previews/209/209578_2558531-lq.mp3');
-			sound.play();
+			player.src = 'http://www.freesound.org/data/previews/209/209578_2558531-lq.mp3';
+			player.play();
 		} else {
 			//convert a negative number to a positive and display a different message
 			var num = winPoints - bet;
@@ -221,7 +224,6 @@ function render() {
 
 // show the images in the board (set the backround of the td)
 function renderBoard() {
-	// $('#board img').each(function() { console.log(this.offsetHeight) });
 	for (var i = 0; i < 9; i++) {
 	   	// get the pic number out of board
 	   	var row = Math.floor(i / 3);
@@ -239,7 +241,8 @@ function gameOver() {
 		alert('Game Over!');
 		document.getElementById('spin').disabled = true;
 	} else {
-	}return false;
+		return false;
+	}
 }
 
 function getSelectedBet() {
@@ -247,4 +250,4 @@ function getSelectedBet() {
 }
 
 
-})
+});  // end of jQuery function
