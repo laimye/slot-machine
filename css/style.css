@@ -10,6 +10,7 @@ header {
 	text-align: center;
 	color: white;
 	font-family: 'Monoton', sans-serif;
+	margin-bottom: 20px;
 }
 
 h1 {
@@ -19,31 +20,47 @@ h1 {
 }
 
 .bottom {
-	position: absolute;
+	text-align: center;
+	width: 500px;
+	margin: 0 auto;
+	display: block;
 }
 
 .right-column {
-	float: top;
+	float: right;
 	margin: auto;
+	display: inline-block;
+	height: 450px;
+	width: 180px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 20px;
+	/*border-style: solid;*/
+	border-image-source: : url(shell1.png); /*doesn't work*/
+	border-image-repeat: round;
+	border-image-slice: 20 22;
 }
 
 .container {
 	margin: 0 auto;
-	width: 600px;
+	width: 700px;
 	overflow: auto;
 	text-align: center;
+	padding-top: 10px;
+	margin-bottom: 30px;
 }
 
 #table {
 	display: inline-block;
+	position: relative;
 	float: left;
 }
 
 #balance {
 	color: #007399;
+	display: inline-block;
 	background-image: url(background1.jpg);
 	box-shadow: inset 0 0 0 4px #5e676e;
-	margin-top: 20px;
+	margin: 40px 20px 10px 0;
 	border-radius: 10px;
 	width: 150px;
 	height: 30px;
@@ -54,26 +71,31 @@ h1 {
 	font-weight: 600;
 	font-family: sans-serif;
 	letter-spacing: 4px;
-    -webkit-border-radius: 10px;
     border: lightblue 3px;
-    
-    -webkit-transition: -webkit-box-shadow .1s ease-in-out;
 }
 
-form {
+/*form {
 	color: white;
-}
+}*/
 
 #msg {
 	font-size: 25px;
 	color: black;
 	font-weight: bold;
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 10px;
 	padding-bottom: 20px;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: block;
+	margin: 0 auto;
+	width: 700px;
+	height: 15px;
+	border-radius: 20px;
 }
+
 #board {
 	border-collapse: collapse;
+	border-image: url(shell1.png) 25% round;
 	/*margin: auto;
 	margin: 10 auto;*/
 }
@@ -104,7 +126,7 @@ form {
 	left: 10px;
 	font-weight: 200;
 	font-size: 1.35em;
-	padding: 10px 10px 10px 80px;
+	padding: 10px 10px 10px 60px;
 	margin: 10px auto;
 	height: 10px;
 	width: 60px;
@@ -137,7 +159,7 @@ footer {
 	height: 120px;
 	line-height: 120px;
 	background: #464d53;
-	margin: 0px auto;
+	margin: 40px 0 0 0px;/*0px auto;*/
 	text-align: center;
 	border-radius: 999px;
 	color: #99e6ff;

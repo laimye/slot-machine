@@ -81,6 +81,7 @@ function initialize() {
 	document.getElementById('spin').disabled = false;
 	balance = 1000; //starting balance
 	render();
+	$('#board img').removeClass('loser-cell');
 	$msg.html('Welcome to MORE SLOTS!');
 }
 
@@ -205,14 +206,14 @@ function render() {
 	if (winningCells) {
 		renderWinningCells();
 		if ((winPoints - bet) > 0)	{
-			$msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits');
+			$msg.html('Congratulations, you won ' + (winPoints - bet) + ' credits!');
 			var sound = new Audio('http://www.freesound.org/data/previews/209/209578_2558531-lq.mp3');
 			sound.play();
 		} else {
 			//convert a negative number to a positive and display a different message
 			var num = winPoints - bet;
 			var posNum = (num < 0) ? num * -1 : num;
-    		$msg.html('Oh well, you lost ' + posNum + ' credits');
+    		$msg.html('Oh well, you lost ' + posNum + ' credits...');
 		}
 	}
 }
