@@ -198,7 +198,6 @@ footer {
 .btn:before {
 	content: "";
 	background: #1A1A1A;
-	/*display: inline-block;*/
 	width: 140px;
 	height: 140px;
 	position: absolute;
@@ -211,7 +210,6 @@ footer {
 	inset 1px 1px 2px rgba(0,0,0,0.5), 
 	inset 5px 15px 40px rgba(0,0,0,0.2),
 	-2px -40px 50px -20px rgba(255,255,255,0.1),
-	/*2px 35px 50px -10px rgba(0,0,0,0.4),*/
 	0px 0px 15px 2px rgba(60,60,60,1);
 }
 
