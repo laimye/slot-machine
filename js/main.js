@@ -67,7 +67,6 @@ var player = new Audio();
 $('input[name=bet]').on('change', function() {
 	bet = getSelectedBet();
 	checkBalance();
-	console.log(bet);
 });
 
 $('#reset-button').on('click', initialize);
@@ -152,7 +151,6 @@ function flashing(cb) {
     }, timerResolution);
 }
 
-
 //subtract bet from balance as soon as player spins the reels
 function subBet() {
 	balance -= bet;
@@ -169,7 +167,6 @@ function setRandomImgs() {
 		board[row][col] = rnd;
 	}
 }
-
   
 // checkWinner
 // the wining credits depend on the winning level (3 for 3-in-line or 2 for 2-in-line), bet, and the ranking of the image.
@@ -189,7 +186,6 @@ function computeWinPointsForRow(row, rowIdx) {
 		return 0;
 	}
 }
-
 		
 // showcase matching pictures. The non-winning cells become transparent
 function renderWinningCells() {
@@ -221,7 +217,6 @@ function render() {
 	}
 }
 
-
 // show the images in the board (set the backround of the td)
 function renderBoard() {
 	for (var i = 0; i < 9; i++) {
@@ -248,6 +243,5 @@ function gameOver() {
 function getSelectedBet() {
 	return parseInt($('input[name=bet]:checked').val());
 }
-
 
 });  // end of jQuery function
